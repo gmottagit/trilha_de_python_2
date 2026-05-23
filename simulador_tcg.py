@@ -1,23 +1,28 @@
-
+# Função responsável por realizar um ataque
 def ataque(monstro1_nome, ataque, nome_defensor, hp_defensor):
 
   hp_defensor -= ataque
+   #Exibe na tela quem atacou, quem recebeu o ataque e o dano causado
   print(f"{monstro1_nome} atacou {nome_defensor} causando {ataque} de dano")
   return hp_defensor
 
+# Função para mostrar o placar atual da batalha
 def exibe_placar(nome1, hp1, nome2, hp2):
   print(f"\n---PLACAR---\n{nome1} = {hp1}\n{nome2} = {hp2}\n")
 
-#MAIN
+
+# ---------------- MAIN ----------------
 monstro1_nome = input("Digite o nome do monstro 1: ")
 monstro2_nome = input("Digite o nome do monstro 2: ")
 monstro1_ataque = int(input("Digite o ataque do monstro 1: "))
 monstro2_ataque = int(input("Digite o ataque do monstro 2: "))
 
+# Verifica se algum ataque é menor que 1
 if monstro1_ataque < 1 or monstro2_ataque < 1:
   print("Você não deve digitar um ponto de ataque menor do que 1")
   exit()
 
+# Verifica se algum HP é menor que 1
 monstro1_HP = int(input("Digite o HP do monstro 1: "))
 monstro2_HP = int(input("Digite o HP do monstro 2: "))
 if monstro1_HP < 1 or monstro2_HP < 1:
@@ -26,6 +31,8 @@ if monstro1_HP < 1 or monstro2_HP < 1:
 
 #Duelo:
 print("\n---HORA DO DUELO---")
+
+# Loop infinito da batalha
 while True:
 
   monstro2_HP = ataque(monstro1_nome, monstro1_ataque, monstro2_nome, monstro2_HP)
@@ -40,4 +47,6 @@ while True:
     print("O monstro 2 venceu")
     exibe_placar(monstro1_nome, monstro1_HP, monstro2_nome, monstro2_HP)
     break
+  
+    # Exibe o placar ao final de cada rodada
   exibe_placar(monstro1_nome, monstro1_HP, monstro2_nome, monstro2_HP)
